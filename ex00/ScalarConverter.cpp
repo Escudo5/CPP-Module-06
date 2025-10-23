@@ -6,7 +6,7 @@
 /*   By: smarquez <smarquez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 12:55:41 by smarquez          #+#    #+#             */
-/*   Updated: 2025/10/23 13:52:27 by smarquez         ###   ########.fr       */
+/*   Updated: 2025/10/23 14:11:14 by smarquez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,32 @@ void ScalarConverter::convert(const std::string &literal)
         std::cout << "char: impossible " << std::endl;
         std::cout << "int: impossible " << std::endl;
     }
+    if (isChar(literal))
+        convertFromChar(literal[0]);
+    else if (isInt(literal))
+        convertFromInt(std::atoi(literal.c_str()));
+    else if (isFloat(literal))
+        convertFromFloat(std::strtof(literal.c_str(), NULL));
+    else if (isDouble(literal))
+        convertFromDouble(std::strtod(literal.c_str(), NULL));
+    else
+        std::cout << "Error: invalid literal" << std::endl;
+        
+}
+
+
+void ScalarConverter::convertFromInt(int literal)
+{
+    if (std::isprint(literal))
+        std::cout << "char: '" <<  static_cast<char>(literal) << "'" << std::endl;
+    else
+        std::cout << "Char: non displayable" << std::endl;
+
+    std::cout << "int: " << literal << std::endl;
+
+    std::cout << "float: " << static_cast<float>(literal) << "f" << std::endl;
+
+    std::cout << "double: " << static_cast<double>(literal) << std::endl;
 }
 
 
