@@ -6,7 +6,7 @@
 /*   By: smarquez <smarquez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 12:55:41 by smarquez          #+#    #+#             */
-/*   Updated: 2025/10/20 13:21:06 by smarquez         ###   ########.fr       */
+/*   Updated: 2025/10/23 13:52:27 by smarquez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,73 @@ bool ScalarConverter::isPseudo(const std::string &literal)
     if (literal == "+inf" || literal == "-inf" || literal == "inf" || literal == "inff" || literal == "+inff" || literal == "-inff")
         return(true);
     return false;
+}
+
+bool ScalarConverter::isChar(const std::string &literal)
+{
+    if (literal.length() == 1  && std::isprint(literal[0]) && !std::isdigit(literal[0]))
+        return true;
+    return false;
+}
+
+bool ScalarConverter::isInt(const std::string &literal)
+{
+    int i = 0;
+    if (literal.length() == 0)
+        return false;
+    if (literal[0] == '+' || literal[0] == '-')
+        i++;
+        
+    for(; i < literal.length(); i++)
+    {
+        if(!std::isdigit(literal[i]))
+            return false;
+    }
+    return true;
+}
+
+bool ScalarConverter::isFloat(const std::string &literal)
+{
+    if (literal.length() == 0)
+        return false;
+    if (literal == "nanf" || literal == "-inff" || literal == "+inff" || literal == "inff")
+        return true;
+    if (literal.back() != 'f')
+        return false;
+    int i = 0;
+    int dotCount = 0;
+    if (literal[0] == '+' || literal[0] == '-')
+        i++;
+    for (; i < literal.length() - 1; i++)
+    {
+        if (literal[i] == '.')
+            dotCount++;
+        else if (!std::isdigit(literal[i]))
+            return false;
+    }
+    if (dotCount != 1)
+        return false;
+    return true;
+}
+
+bool ScalarConverter::isDouble(const std::string &literal)
+{
+    if (literal.length() == 0)
+        return false;
+    if (literal == "nan" || literal == "-inf" || literal == "+inf" || literal == "inf")
+        return true;
+    int i = 0;
+    int dotCount = 0;
+    if (literal[0] == '+' || literal[0] == '-')
+        i++;
+    for (; i < literal.length(); i++)
+    {
+        if (literal[i] == '.')
+            dotCount++;
+        else if (!std::isdigit(literal[i]))
+            return false;
+    }
+    if (dotCount != 1)
+        return false;
+    return true;
 }
