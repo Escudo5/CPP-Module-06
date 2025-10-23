@@ -6,7 +6,7 @@
 /*   By: smarquez <smarquez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 12:55:41 by smarquez          #+#    #+#             */
-/*   Updated: 2025/10/23 14:11:14 by smarquez         ###   ########.fr       */
+/*   Updated: 2025/10/23 18:48:36 by smarquez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,69 @@ void ScalarConverter::convertFromInt(int literal)
     if (std::isprint(literal))
         std::cout << "char: '" <<  static_cast<char>(literal) << "'" << std::endl;
     else
-        std::cout << "Char: non displayable" << std::endl;
+        std::cout << "char: non displayable" << std::endl;
 
     std::cout << "int: " << literal << std::endl;
-
     std::cout << "float: " << static_cast<float>(literal) << "f" << std::endl;
-
     std::cout << "double: " << static_cast<double>(literal) << std::endl;
+}
+
+void ScalarConverter::convertFromChar(char literal)
+{
+    if (std::isprint(literal))
+        std::cout << "char : " << literal << "'" << std::endl;
+    std::cout << "int: " << static_cast<int>(literal) << std::endl;
+    std::cout << "float: " << static_cast<float>(literal) << "f" << std::endl;
+    std::cout << "double: " << static_cast<double>(literal) << std::endl;
+}
+
+void ScalarConverter::convertFromFloat(float literal)
+{
+    if (std::isnan(literal) || std::isinf(literal))
+        std::cout << "char: impossible" << std::endl;
+    else if(std::isprint(static_cast<int>(literal)))
+        std::cout << "char: " << static_cast<char>(literal) << "'" << std::endl;
+    else
+        std::cout << "char: non dislayable" << std::endl;
+
+    if (std::isnan(literal) || std::isinf(literal))
+        std::cout << "int: impossible" << std::endl;
+    else
+        std::cout << "int: " << static_cast<int>(literal) << std::endl;
+
+    std::cout << "float: " << literal;
+    if (literal == static_cast<float>(literal))
+        std::cout << ".0";
+    std::cout << "f" << std::endl;
+
+    std::cout << "double: " << static_cast<double>(literal);
+    if (literal == static_cast<int>(literal))
+        std::cout << ".0";
+    std::cout << std::endl;
+}
+void ScalarConverter::convertFromDouble(double literal)
+{
+    if (std::isnan(literal) || std::isinf(literal))
+        std::cout << "char: impossible" << std::endl;
+    else if(std::isprint(static_cast<int>(literal)))
+        std::cout << "char: " << static_cast<char>(literal) << "'" << std::endl;
+    else
+        std::cout << "char: non dislayable" << std::endl;
+
+    if (std::isnan(literal) || std::isinf(literal))
+        std::cout << "int: impossible" << std::endl;
+    else
+        std::cout << "int: " << static_cast<int>(literal) << std::endl;
+
+    std::cout << "float: " << static_cast<float>(literal);
+    if (literal == static_cast<int>(literal))
+        std::cout << ".0";
+    std::cout << "f" << std::endl;
+
+    std::cout << "double: " << literal;
+    if (literal == static_cast<int>(literal))
+        std::cout << ".0";
+    std::cout << std::endl;
 }
 
 

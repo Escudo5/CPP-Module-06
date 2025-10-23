@@ -6,7 +6,7 @@
 /*   By: smarquez <smarquez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 10:49:46 by smarquez          #+#    #+#             */
-/*   Updated: 2025/10/23 14:06:11 by smarquez         ###   ########.fr       */
+/*   Updated: 2025/10/23 18:46:04 by smarquez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <iostream>
 #include <limits>
 #include <cctype>
+#include <cmath>
 
 
 class ScalarConverter
