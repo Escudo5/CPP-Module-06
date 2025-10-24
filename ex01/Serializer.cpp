@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smarquez <smarquez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/24 12:58:20 by smarquez          #+#    #+#             */
-/*   Updated: 2025/10/24 13:02:31 by smarquez         ###   ########.fr       */
+/*   Created: 2025/10/24 13:31:49 by smarquez          #+#    #+#             */
+/*   Updated: 2025/10/24 13:45:59 by smarquez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#include "Serializer.hpp"
 
-int main(int argc, char **argv)
+Serializer::Serializer()
 {
-    if (argc != 2)
-        return(1);
-    ScalarConverter::convert(argv[1]);
+    
+}
+
+Serializer::~Serializer()
+{
+    
+}
+
+uintptr_t Serializer::serialize(Data *ptr)
+{
+    return reinterpret_cast<uintptr_t>(ptr);  //convierte el puntero a un int
+}
+
+Data *Serializer::deserialize(uintptr_t raw)
+{
+    return reinterpret_cast<Data*>(raw);  //convierte el int a un puntero
 }

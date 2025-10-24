@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smarquez <smarquez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/24 12:58:20 by smarquez          #+#    #+#             */
-/*   Updated: 2025/10/24 13:02:31 by smarquez         ###   ########.fr       */
+/*   Created: 2025/10/24 13:56:57 by smarquez          #+#    #+#             */
+/*   Updated: 2025/10/24 14:20:38 by smarquez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#ifndef BASE_HPP
+#define BASE_HPP
 
-int main(int argc, char **argv)
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <exception>
+
+class Base
 {
-    if (argc != 2)
-        return(1);
-    ScalarConverter::convert(argv[1]);
-}
+    public:
+        virtual ~Base();
+};
+
+Base *generate(void);
+void identify(Base *p);
+void identify(Base &p);
+
+
+#endif

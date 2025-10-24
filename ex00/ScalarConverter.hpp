@@ -6,7 +6,7 @@
 /*   By: smarquez <smarquez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 10:49:46 by smarquez          #+#    #+#             */
-/*   Updated: 2025/10/23 18:46:04 by smarquez         ###   ########.fr       */
+/*   Updated: 2025/10/24 13:05:54 by smarquez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ class ScalarConverter
         static void convertFromInt(int literal);
         static void convertFromFloat(float literal);
         static void convertFromDouble(double literal);
-        static void printPseudo(const std::string &literal);
+        // static void printPseudo(const std::string &literal);
         
     public:
         static void convert(const std::string &literal);

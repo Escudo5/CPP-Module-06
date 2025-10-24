@@ -6,7 +6,7 @@
 /*   By: smarquez <smarquez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 12:55:41 by smarquez          #+#    #+#             */
-/*   Updated: 2025/10/23 18:48:36 by smarquez         ###   ########.fr       */
+/*   Updated: 2025/10/24 13:12:23 by smarquez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ ScalarConverter::ScalarConverter()
 {
     std::cout << "Default constructor" << std::endl;
 }
-ScalarConverter::ScalarConverter(const ScalarConverter &copy)
-{
+// ScalarConverter::ScalarConverter(const ScalarConverter &copy)
+// {
     
-}
+// }
 
-ScalarConverter &ScalarConverter::operator=(const ScalarConverter &copy)
-{
+// ScalarConverter &ScalarConverter::operator=(const ScalarConverter &copy)
+// {
     
-}
+// }
 
 ScalarConverter::~ScalarConverter()
 {
@@ -47,11 +47,11 @@ void ScalarConverter::convert(const std::string &literal)
     if (isChar(literal))
         convertFromChar(literal[0]);
     else if (isInt(literal))
-        convertFromInt(std::atoi(literal.c_str()));
+        convertFromInt(atoi(literal.c_str()));
     else if (isFloat(literal))
-        convertFromFloat(std::strtof(literal.c_str(), NULL));
+        convertFromFloat(strtof(literal.c_str(), NULL));
     else if (isDouble(literal))
-        convertFromDouble(std::strtod(literal.c_str(), NULL));
+        convertFromDouble(strtod(literal.c_str(), NULL));
     else
         std::cout << "Error: invalid literal" << std::endl;
         
@@ -84,7 +84,7 @@ void ScalarConverter::convertFromFloat(float literal)
     if (std::isnan(literal) || std::isinf(literal))
         std::cout << "char: impossible" << std::endl;
     else if(std::isprint(static_cast<int>(literal)))
-        std::cout << "char: " << static_cast<char>(literal) << "'" << std::endl;
+        std::cout << "char: '" << static_cast<char>(literal) << "'" << std::endl;
     else
         std::cout << "char: non dislayable" << std::endl;
 
@@ -128,6 +128,10 @@ void ScalarConverter::convertFromDouble(double literal)
     std::cout << std::endl;
 }
 
+// void ScalarConverter::printPseudo(const std::string &literal)
+// {
+    
+// }
 
 bool ScalarConverter::isPseudo(const std::string &literal)
 {
@@ -147,7 +151,7 @@ bool ScalarConverter::isChar(const std::string &literal)
 
 bool ScalarConverter::isInt(const std::string &literal)
 {
-    int i = 0;
+    std::size_t i = 0;
     if (literal.length() == 0)
         return false;
     if (literal[0] == '+' || literal[0] == '-')
@@ -167,9 +171,9 @@ bool ScalarConverter::isFloat(const std::string &literal)
         return false;
     if (literal == "nanf" || literal == "-inff" || literal == "+inff" || literal == "inff")
         return true;
-    if (literal.back() != 'f')
+    if (literal[literal.length() - 1] != 'f')
         return false;
-    int i = 0;
+    std::size_t i = 0;
     int dotCount = 0;
     if (literal[0] == '+' || literal[0] == '-')
         i++;
@@ -191,7 +195,7 @@ bool ScalarConverter::isDouble(const std::string &literal)
         return false;
     if (literal == "nan" || literal == "-inf" || literal == "+inf" || literal == "inf")
         return true;
-    int i = 0;
+    std::size_t i = 0;
     int dotCount = 0;
     if (literal[0] == '+' || literal[0] == '-')
         i++;

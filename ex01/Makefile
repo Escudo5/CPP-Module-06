@@ -1,6 +1,6 @@
-NAME = ex00
+NAME = ex01
 
-SRC = main.cpp ScalarConverter.cpp
+SRC = main.cpp Serializer.cpp
 OBJ = $(SRC:.cpp=.o)
 
 CC = c++
@@ -16,11 +16,11 @@ $(NAME) : $(OBJ)
 
 clean:
 	@rm -rf $(OBJ)
-	@echo "[ex00] Object files cleaned."
+	@echo "[ex01] Object files cleaned."
 
 fclean: clean
 	@rm -rf $(NAME)
-	@echo "[ex00] Executable cleaned."
+	@echo "[ex01] Executable cleaned."
 
 re: fclean all
 

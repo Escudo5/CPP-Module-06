@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   B.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smarquez <smarquez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/24 12:58:20 by smarquez          #+#    #+#             */
-/*   Updated: 2025/10/24 13:02:31 by smarquez         ###   ########.fr       */
+/*   Created: 2025/10/24 13:59:28 by smarquez          #+#    #+#             */
+/*   Updated: 2025/10/24 13:59:36 by smarquez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#ifndef B_HPP
+#define B_HPP
 
-int main(int argc, char **argv)
+#include "Base.hpp"
+
+
+class B : public Base
 {
-    if (argc != 2)
-        return(1);
-    ScalarConverter::convert(argv[1]);
-}
+    
+};
+#endif
