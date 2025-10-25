@@ -6,7 +6,7 @@
 /*   By: smarquez <smarquez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 14:01:15 by smarquez          #+#    #+#             */
-/*   Updated: 2025/10/24 14:20:14 by smarquez         ###   ########.fr       */
+/*   Updated: 2025/10/25 13:25:08 by smarquez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,14 @@ Base::~Base()
 }
 Base *generate(void)
 {
-    srand(time(NULL));
-    rand() % 3;
+    int random = rand() % 3;
     
+    if (random == 0)
+        return new A();
+    else if (random == 1)
+        return new B();
+    else
+        return new C();
 }
 
 void identify(Base *p)
